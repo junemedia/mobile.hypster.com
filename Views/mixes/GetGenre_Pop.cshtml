@@ -1,0 +1,19 @@
+﻿@{
+    Layout = null;
+}
+
+
+<script type="text/javascript">
+
+    $("#HypAudioPL").attr("src", "@ViewBag.SONG_URL");
+    $("#HypAudioPL").trigger("play");
+
+</script>
+
+
+<div style=" float:left; width:96%; margin-left:2%; margin-top:10px;">
+    @ViewBag.SONG_NAME
+</div>
+
+
+

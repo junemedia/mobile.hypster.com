@@ -1,0 +1,113 @@
+﻿@model hypster.ViewModels.LoginViewModel
+@{
+    ViewBag.Title = "Hypster - free music online - player for tumblr";
+}
+
+
+
+
+<div style=" width:100%; min-height:400px; background-color:#313537; overflow:hidden;">
+
+            
+      <div style=" float:left; width:308px; background-color:#252525; padding:2px; margin:4px 0 4px 4px; overflow:hidden;">
+
+
+                <div style=" float:left; width:100%; margin:0px 0 0 0px; ">
+                
+                        @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+         
+                            <div style=" font-size:27px;">
+                                Sign in to Hypster.com
+                            </div>
+            
+
+                            <div style=" float:left; width:100%; margin-top:10px;">
+                                <div style=" float:left; font-size:18px; text-align:left;">
+                                    &nbsp;Username:
+                                </div>
+                                <div style=" float:left; margin:4px 0 0 4px;">
+                                    @Html.TextBoxFor(m => m.UserName, new { @class = "txtLogin" })
+                                </div>
+                            </div>
+
+             
+                            <div style=" float:left; width:100%; margin-top:10px;">
+                                <div style=" float:left; font-size:18px; text-align:left;">
+                                    &nbsp;&nbsp;Password:
+                                </div>
+                                <div style=" float:left; margin:4px 0 0 4px;">
+                                @Html.PasswordFor(m => m.Password, new { @class = "txtLogin" })
+                                </div>
+                            </div>
+                
+                
+                            
+                            <div style=" float:left; width:100%; margin-top:10px;">
+                                <div style=" float:left; margin:13px 0 0 0; text-align:left;">
+                                    @Html.CheckBoxFor(m => m.RememberMe) 
+                                    @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+                                </div>
+                            
+                                <input type="submit" value="Log in" style=" float:right; width:160px; height:28px; margin:7px 10px 0 0;" />
+                            </div>
+        
+                            
+                        
+                            <div style=" float:left; width:100%;">
+                                @Html.ValidationSummary(true, "", new { @class = "txtValidator" })
+
+                                @if (ViewBag.ForgotPassword != null && ViewBag.ForgotPassword == true)
+                                {
+                                    <a href="/account/ForgotPassword">Forgot your password?</a>
+                                }
+                                
+                                @if (ViewBag.ActivateAccount != null && ViewBag.ActivateAccount == true)
+                                {
+                                    <a href="/account/ActivateAccount">To activate click here</a>
+                                }
+                            </div>
+                        }
+                </div>
+
+
+
+
+                <div style=" float:left; width:100%; height:250px; ">
+                
+                    <div style=" font-size:27px; margin-top:10px;">
+                        Don't Have An Account?
+                    </div>
+
+                    <div onclick="window.location='/account/register';" style=" float:left; width:260px; height:170px; line-height:150px; margin:10px 0 0 20px; background-color:#121212; border-radius:3px; font-size:35px; text-align:center; cursor:pointer;">
+                        Register
+                    </div>
+
+                </div>
+
+
+        </div>
+</div>
+
+
+
+
+
+
+<div style=" width:100%; min-height:50px; background-color:#313537; overflow:hidden; margin-top:7px;">
+            
+      
+                <div  style=" float:left; width:100%;">
+            
+                    <script src="http://feed-rt.baronsoffers.com/xmlfeed/mt.php?domain=hypster.com"></script>
+                    <iframe src="http://feed-rt.baronsoffers.com/offer/feed/q/aT02NDYzLHM9MzIweDUwLG49aWZyYW1lLGI9MA==?subid=default" width="1" height="1" scrolling="no" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+
+                </div>
+
+
+         
+</div>
+
+
+
+
+

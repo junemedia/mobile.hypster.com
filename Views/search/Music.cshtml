@@ -1,0 +1,138 @@
+﻿@using Google.GData;
+@using Google.GData.Client;
+@using Google.GData.Extensions;
+@using Google.GData.YouTube;
+@using Google.YouTube;
+
+
+@model Feed<Video>
+@{
+    ViewBag.Title = "Music Search";
+    Layout = null;
+}
+
+
+
+<div style="float:right; width:100%;">
+
+
+<div class="SearchPageRoot">
+    
+    @{ int curr_index = 1; }
+    @{ int back_id = 1; }
+    @if (Model != null)
+    {
+        
+        foreach (var item in Model.Entries)
+        {
+            <div @if(back_id == 1){ <text>class="SongItm"</text>}else{<text>class="SongItmB"</text>} >
+                
+
+                <div class="lfCont" onclick="OpenPlayer('song_guid=@item.VideoId&song_title=@HttpUtility.UrlEncode(item.Title)');">
+                    
+                    <img alt="" class="imgThumb" src="@item.Thumbnails[0].Url" onclick="OpenPlayer('song_guid=@item.VideoId&song_title=@HttpUtility.UrlEncode(item.Title)');" />
+                    
+                    <div class="songCont">
+                        <div style=" float:left; width:100%; height:22px; overflow:hidden;">
+                            @item.Title
+                        </div>
+                        <div style=" float:left; width:100%;">
+                            Views: <span class="style_24">@item.ViewCount</span>
+                        </div>
+                    </div>
+                    
+                </div>
+
+
+
+                <div class="rtCont">
+                    
+                    <div class="AddPl_btn" onclick="ShowAddToMyPlaylist('?song_guid=@item.VideoId&song_title=@System.Web.HttpUtility.UrlEncode(item.Title)');">+</div>
+                    
+                </div>
+
+            </div>
+        
+                 if (curr_index == 12)
+                 {
+                    <!-- ADS HERE -->
+                 }
+
+
+                 back_id = back_id * -1;
+                 curr_index = curr_index + 1;
+        }
+
+
+
+
+
+
+        if (Model.Entries.ToList().Count() == 0)
+        {
+            <div class="NFMessageCont">
+                <div>No video results for “@ViewBag.search_string.Replace("+", " ")”</div>
+            </div>
+        }
+
+
+    }
+    
+
+
+
+
+
+
+
+
+@if (Model != null)
+{
+    <div class="SongSearchPagingRoot">
+        
+        <div class="PagingInner">
+        @{ int total_pages = 20; }
+        @{ total_pages = Model.TotalResults / Model.PageSize; }
+
+
+        @if ((Model.TotalResults % Model.PageSize) > 0)
+        {
+            total_pages += 1;
+        }
+
+        @if (total_pages > 20)
+        {
+            total_pages = 20;
+        }
+        
+
+
+        @for (int i = 1; i <= total_pages; i++)
+        {
+            if (ViewBag.CurrPage == i)
+            {
+                <a class="searchPagingBtn_Sel" onclick="SearchMusicStrPage('@ViewBag.search_string', '@i')" >@i.ToString()</a>
+            }
+            else
+            {   
+                <a class="searchPagingBtn" onclick="SearchMusicStrPage('@ViewBag.search_string', '@i')" >@i.ToString()</a>
+            }
+        }
+        </div>
+       
+    </div>
+}
+
+
+<!-- ADS HERE -->
+
+
+
+
+
+</div>
+
+
+
+
+</div>

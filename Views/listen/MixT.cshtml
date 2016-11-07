@@ -1,0 +1,241 @@
+﻿@model hypster_tv_DAL.c_Mix
+@{
+    ViewBag.Title = "Hypster - free music online - player for tumblr";
+    ViewBag.ActivePage = "listen";
+    Layout = "~/Views/Shared/_LayoutT.cshtml";
+}
+
+
+<script type="text/javascript">
+    active_menu = ".mListen";
+    $(".mListen").css("background-color", "#41606e");
+</script>
+
+
+
+
+<div style=" float:left; width:100%; min-height:350px; margin-top:0px; ">
+
+
+
+        <div id="listenTab1" style=" float:left; width:100%; ">
+                
+                <div style=" float:left; width:100%; margin-top:3px;">
+    
+                    <div id="PlayNextBtn" onclick="SkipTrack();" style=" display:none; float:left; width:190px; height:23px; line-height:23px; border-radius:3px; background-color:#41606E; margin:0 0 0 10px; padding:2px; cursor:pointer;">
+                        SKIP TRACK
+                    </div>
+
+                    <div id="PlayNextMixBtn" onclick="PlayNextMix();" style=" display:none; float:left; width:95px; height:23px; line-height:23px; border-radius:3px; background-color:#41606E; margin:0 0 0 10px; padding:2px; cursor:pointer;">
+                        NEXT MIX
+                    </div>
+
+                </div>
+
+        </div>
+
+
+
+        <div id="PlayCT_Holder" style=" float:left; width:100%; margin-top:7px; font-size:16px; color:#dedede;">
+        </div>
+
+        <div id="MiddleContH" style=" float:left; width:100%; display:none;">
+            <div style=" float:left; width:40%; margin-left:10%; ">
+                <div id="Cover_Holder" style=" float:left; width:100%; margin-top:12px;">
+                </div>
+            </div>
+            <div id="Ads_Holder" style=" float:left; width:40%;">
+                    
+                    <script src="http://feed-rt.baronsoffers.com/xmlfeed/mt.php?domain=hypster.com"></script>
+                    <iframe src="http://feed-rt.baronsoffers.com/offer/feed/q/aT02NDYzLHM9MzIweDUwLG49aWZyYW1lLGI9MA==?subid=default" width="1" height="1" scrolling="no" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+                    
+            </div>
+        </div>
+
+        <div id="Tags_Holder" style=" float:left; width:99%; margin-left:1%; margin-top:12px; text-align:left; color:#cdcdcd;">
+        </div>
+
+
+
+
+        <div id="MainPlayCTH" style=" float:left; width:100%; margin-top:0px; overflow:hidden; ">
+            <div id="StartPlMsg" onclick="dispPlayer()">Click play to start listen</div>
+
+            <audio id="HypAudioPL" controls="controls" autoplay="autoplay" src="http://stagetest.hypster.com/beep.mp3" height="10" width="10"></audio>
+        </div>
+
+
+
+
+</div>
+
+
+
+
+<script type="text/javascript">
+    var MIX_ID = "@Model.Mix_ID";
+    var MIX_COVER = "@Model.Mix_Cover";
+    var MIX_TAGS = "@Model.Mix_Tags";
+</script>
+
+
+
+
+
+<script type="text/javascript">
+    var repTimer = false;
+    var setup_completed = false;
+    var Play_Token = @Html.Action("GetPlay_Token", "mixes");
+
+    function PlayNext() {
+        clearInterval(repTimer);
+
+        if(setup_completed == false)
+        {
+            $("#PlayNextBtn").css("display","block");
+            $("#PlayNextMixBtn").css("display","block");
+            $("#MiddleContH").css("display","block");
+
+            $("#StartPlMsg").css("display","none");
+            $("#HypAudioPL").removeAttr("controls");
+            $("#Cover_Holder").html("<img alt='' src='" + MIX_COVER + "' style='border:5px solid #313131; border-radius:3px;' />");
+            
+
+
+            var tags_str = "";
+            var tags_arr = MIX_TAGS.split(', ');
+            for(var i=0; i<tags_arr.length; i++)
+            {
+                var ctag = replaceAll("&amp;", "_and_", tags_arr[i]);
+                ctag = replaceAll(" ", "_", ctag);
+                ctag = replaceAll("__", "_", ctag);
+                tags_str += "<a class=\"Gtag\" href=\"/listen/" + encodeURIComponent(ctag) + "\">" + tags_arr[i] + "</a>";
+            }
+            $("#Tags_Holder").html( "<div style='float:left; margin-right:3px; margin-bottom:2px; width:100%;'>Tags</div> " + tags_str );
+            
+
+            setup_completed = true;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/mixes/NextTrack/" + Play_Token + "?mix_id=" + MIX_ID,
+            async: true,
+            success: function (data) {
+                $('#PlayCT_Holder').html(data);
+            }
+        });
+
+        LoadAd();
+    }
+
+
+
+    function SkipTrack()
+    {
+        $.ajax({
+            type: "POST",
+            url: "/mixes/SkipTrack/" + Play_Token + "?mix_id=" + MIX_ID,
+            async: true,
+            success: function (data) {
+                $('#PlayCT_Holder').html(data);
+            }
+        });
+
+        LoadAd();
+    }
+
+
+    function PlayNextMix()
+    {
+        $.ajax({
+            type: "POST",
+            url: "/mixes/GetNextRandomMix/@ViewBag.GENRE",
+            async: true,
+            success: function (data) {
+                var mix_arr = data.split("|");
+                MIX_ID = mix_arr[0];
+                MIX_COVER = mix_arr[1];
+
+                setup_completed = false;
+                PlayNext();
+            }
+        });
+
+        LoadAd();
+    }
+
+
+    function ReportSong()
+    {
+        clearInterval(repTimer);
+
+        $.ajax({
+            type: "POST",
+            url: "/mixes/ReportSong?PLAY_TOKEN=" + Play_Token + "&TRACK_ID=" + TRACK_ID + "&MIX_ID=" + MIX_ID,
+            async: true,
+            success: function (data) {
+            }
+        });
+    }
+
+
+
+    function dispPlayer()
+    {
+        setup_completed = false;
+        $("#MainPlayCTH").html("<div id=\"StartPlMsg\" onclick=\"dispPlayer()\">Click play to start listen</div><audio id=\"HypAudioPL\" controls=\"controls\" autoplay=\"autoplay\" src=\"http://stagetest.hypster.com/beep.mp3\" height=\"10\" width=\"10\"></audio>");
+
+        BindPlayerEvents();
+    }
+
+    function LoadAd()
+    {
+        
+    }
+
+
+
+    function BindPlayerEvents()
+    {
+        $("#HypAudioPL").bind('ended', function(){
+            PlayNext();
+        });
+
+        $("#HypAudioPL").bind('error', function(){
+            $('#MainPlayCTH').html("<div id=\"StartPlMsg\">Click play to start listen</div><audio id=\"HypAudioPL\" controls=\"controls\" autoplay=\"autoplay\" src=\"http://stagetest.hypster.com/beep.mp3\" height=\"100\" width=\"10\"></audio>");
+            setup_completed = false;
+            PlayNext();
+        });
+
+        $("#HypAudioPL").bind('playing', function(){
+            clearInterval(repTimer);
+            repTimer = setInterval(function(){ReportSong()}, 30000);
+        });
+    }
+
+    BindPlayerEvents();
+
+</script>
+
+
+
+
+    
+
+<div style=" float:left; width:99%; margin-left:1%; margin-top:12px;">
+    <div onclick="window.location='/genres';" style=" float:left; width:95px; height:100px; font-size:16px; background-color:#2b3033; border-radius:3px; padding:2px; margin:3px; cursor:pointer;"> 
+        <img style=" float:left; margin:5px 0 0 13px; " width="75" alt="" src="/imgs/mobile/home/listen_music_icn.png" /> 
+        <div style=" float:left; width:100%;">More Genres</div>
+    </div>
+
+    <div onclick="window.location='/account/info';" style=" float:left; width:95px; height:100px; font-size:16px; background-color:#2b3033; border-radius:3px; padding:2px; margin:3px; cursor:pointer;"> 
+        <img style=" float:left; margin:5px 0 0 13px; " width="75" alt="" src="/imgs/mobile/home/my_account_icn.png" /> 
+        <div style=" float:left; width:100%;">My Account</div>
+    </div>
+
+    <div onclick="window.location='/mixes';" style=" float:left; width:95px; height:100px; font-size:16px; background-color:#2b3033; border-radius:3px; padding:2px; margin:3px; cursor:pointer;">
+        <img style=" float:left; margin:5px 0 0 13px; " width="75" alt="" src="/imgs/mobile/home/create_playlist_icn.png" /> 
+        <div style=" float:left; width:100%;">More Mixes</div>
+    </div>
+</div>

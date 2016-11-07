@@ -1,0 +1,14 @@
+﻿
+@if (Request.IsAuthenticated)
+{
+   
+    
+    <div onclick="window.location='/account';" style="float:left; width:135px; height:31px; line-height:31px; margin:5px 0 0 3px; background-color:#41606e; border-radius:3px; cursor:pointer;">
+        My Account
+    </div>
+    
+    <div style="float:right; width:133px; height:31px; line-height:31px; margin:5px 15px 0 0; background-color:#41606e; border-radius:3px; cursor:pointer;">
+        @Html.ActionLink("Log out", "LogOff", "account")
+    </div>
+    
+}

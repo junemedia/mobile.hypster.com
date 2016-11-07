@@ -1,0 +1,209 @@
+﻿@model hypster.ViewModels.getAccountInfo_PrivateViewModel
+
+@{
+    ViewBag.Title = "Hypster - free music online - player for tumblr";
+    Layout = "~/Views/Shared/_LayoutT.cshtml";
+}
+
+
+
+<script type="text/javascript">
+    active_menu = ".mAccount";
+    $(".mAccount").css("background-color", "#41606e");
+</script>
+
+
+
+
+
+
+<div style=" width:100%; min-height:60px; background-color:#313537; overflow:hidden; padding:4px 0 4px 0; border-radius:2px;">
+            
+
+            <div id="SectionMenu1" onclick="window.location='/account/info';" style=" float:left; width:100px; height:60px; overflow:hidden; margin-left:5px; background-color:#181818; text-align:center; font-family:Hypster-Segoe; font-weight:lighter; font-size:19px; color:#CDCDCD; cursor:pointer; border-radius:2px;">
+            
+                <div style=" float:left; width:100%; line-height:54px; text-align:center;">  
+                    Info
+                </div>
+            
+            </div>
+
+
+
+            <div id="SectionMenu2" onclick="window.location='/account/music';" style=" float:left; width:100px; height:60px; overflow:hidden; margin-left:5px; background-color:#292929; text-align:center; font-family:Hypster-Segoe; font-weight:lighter; font-size:19px; color:#CDCDCD; cursor:pointer; border-radius:2px;">
+            
+                <div style=" float:left; width:100%; line-height:54px; text-align:center;">
+                    Music
+                </div>
+
+            </div>
+
+
+
+            <div id="SectionMenu3" onclick="window.location='/account/friends';" style=" float:left; width:100px; height:60px; overflow:hidden; margin-left:5px; background-color:#292929; text-align:center; font-family:Hypster-Segoe; font-weight:lighter; font-size:19px; color:#CDCDCD; cursor:pointer; border-radius:2px;">
+                
+                <div style=" float:left; width:100%; line-height:54px; text-align:center;">
+                    Friends
+                </div>
+            
+            </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+@using (Html.BeginForm("InfoPost", "account", FormMethod.Post))
+{
+    
+    <!-- **************SECTION*************************** -->
+    <div style=" float:left; width:100%; min-height:350px; background-color:#313537; overflow:hidden; margin-top:10px; border-radius:2px;">
+                    
+
+                <div style=" float:left; width:100%; color:#EEEEEE; font-family:Hypster-Segoe; font-weight:lighter; font-size:18px; text-align:left; margin:5px 0 0px 0;">
+                    &nbsp;Personal Info
+                </div>
+        
+
+                <div style=" float:right; width:98%; margin:15px 0 0 2%; ">
+            
+                    <div style=" float:left; width:306px; height:26px; border:1px solid #DEDEDE; background-color:#DEDEDE; border-radius:2px; font-family:Hypster-Segoe; font-weight:lighter; font-size:16px; overflow:hidden;">
+                        <div style=" float:left; width:60px; margin:1px 0 0 0; text-align:right; color:#2f5262;">Name:</div>
+                        <input type="text" name="Name" id="Name" value="@Model.curr_user.name" style=" float:left; outline: none; width:170px; height:23px; margin:1px 0 0 5px; background-color:#DEDEDE; border:none; font-family:Hypster-Segoe; font-weight:lighter; font-size:16px;"  />
+                    </div>
+
+                    <div style=" float:left; width:306px; height:26px; margin-top:5px; border:1px solid #DEDEDE; background-color:#DEDEDE; border-radius:2px; font-family:Hypster-Segoe; font-weight:lighter; font-size:16px; overflow:hidden;">
+                        <div style=" float:left; width:90px; margin:1px 0 0 0; text-align:right; color:#2f5262;">Username:</div>
+                        <div style=" float:left; margin:1px 0 0 7px; color:#2f5262;">@Model.curr_user.username</div>
+                    </div>
+
+                </div>
+        
+
+                <div style=" float:right; width:98%; margin:25px 0 0 2%; ">
+            
+                    <div style=" float:left; width:306px; height:26px; border:1px solid #DEDEDE; background-color:#DEDEDE; border-radius:2px; font-family:Hypster-Segoe; font-weight:lighter; font-size:16px; overflow:hidden;">
+                        <div style=" float:left; margin:1px 0 0 7px; color:#2f5262;">Email:</div>
+                        <div style=" float:left; margin:1px 0 0 7px; color:#2f5262;">@Model.curr_user.email</div>
+                    </div>
+
+                    <div style=" float:left; width:275px; height:26px; margin-top:5px; border:1px solid #DEDEDE; background-color:#DEDEDE; border-radius:2px; font-family:Hypster-Segoe; font-weight:lighter; font-size:16px; overflow:hidden;">
+                        <div style=" float:left; margin:1px 0 0 7px; color:#2f5262;">Member Since:</div>
+                        <div style=" float:left; margin:3px 0 0 7px; color:#2f5262;">@Model.curr_user.regdate.ToShortDateString()</div>
+                    </div>
+
+                </div>
+
+
+
+
+                <div style=" float:right; width:98%; margin:25px 0 0 2%; ">
+            
+                    <div style=" float:left; width:306px; height:26px; border:1px solid #DEDEDE; background-color:#DEDEDE; border-radius:2px; font-family:Hypster-Segoe; font-weight:lighter; font-size:16px; overflow:hidden;">
+                        <div style=" float:left; margin:1px 0 0 7px; color:#2f5262;">City:</div>
+                        <input type="text" name="City" id="City" value="@Model.curr_user.city" style=" float:left; outline: none; width:175px; height:23px; margin:0px 0 0 5px; background-color:#DEDEDE; border:none; font-family:Hypster-Segoe; font-weight:lighter; font-size:16px;"  />
+                    </div>
+
+                    <div style=" float:left; width:306px; height:26px; margin-top:5px; border:1px solid #DEDEDE; background-color:#DEDEDE; border-radius:2px; font-family:Hypster-Segoe; font-weight:lighter; font-size:16px; overflow:hidden;">
+                        <div style=" float:left; margin:1px 0 0 7px; color:#2f5262;">Country:</div>
+                        <input type="text" name="Country" id="Country" value="@Model.curr_user.country" style=" float:left; outline: none; width:170px; height:23px; margin:0px 0 0 5px; background-color:#DEDEDE; border:none; font-family:Hypster-Segoe; font-weight:lighter; font-size:16px;"  />
+                    </div>
+
+                    <div style=" float:left; width:170px; height:26px; margin-top:5px; border:1px solid #DEDEDE; background-color:#DEDEDE; border-radius:2px; font-family:Hypster-Segoe; font-weight:lighter; font-size:16px; overflow:hidden;">
+                        <div style=" float:left; margin:1px 0 0 7px; color:#2f5262;">Zip:</div>
+                        <input type="text" name="Zip" id="Zip" value="@Model.curr_user.zipcode" style=" float:left; outline: none; width:70px; height:23px; margin:0px 0 0 5px; background-color:#DEDEDE; border:none; font-family:Hypster-Segoe; font-weight:lighter; font-size:16px;"  />
+                    </div>
+
+                </div>
+
+
+
+                <div style=" float:right; width:98%; margin:25px 0 0 2%; ">
+            
+                    <div style=" float:left; width:100%; margin-bottom:5px;">
+                        <div style=" float:left; width:100px; height:26px; border:1px solid #DEDEDE; background-color:#DEDEDE; border-radius:2px; font-family:Hypster-Segoe; font-weight:lighter; font-size:16px;">
+                            <div style=" float:left; margin:1px 0 0 7px; color:#2f5262;">Birth Date:</div>
+                        </div>
+                    </div>
+
+
+                    <div style=" float:left; width:60px; height:26px; border:1px solid #DEDEDE; margin-left:20px; background-color:#DEDEDE; border-radius:2px; font-family:Hypster-Segoe; font-weight:lighter; font-size:16px;">
+                    
+                        <select id="DOB_MM" name="DOB_MM" style=" float:left; outline: none; width:50px; height:23px; margin:2px 0 0 5px; background-color:#DEDEDE; border:none; font-family:Hypster-Segoe; font-weight:lighter; font-size:16px;">
+                            @for (int i = 1; i <= 12; i++)
+                            {
+                                <option value="@i" @if (Model.curr_user.birth != null && Model.curr_user.birth.Value.Month == i)
+                                                   { <text>selected="selected"</text>}>@i</option>
+                            }
+                        </select>
+
+                    </div>
+
+
+
+                    <div style=" float:left; width:60px; height:26px; border:1px solid #DEDEDE; margin-left:20px; background-color:#DEDEDE; border-radius:2px; font-family:Hypster-Segoe; font-weight:lighter; font-size:16px;">
+                    
+                        <select id="DOB_DD" name="DOB_DD" style=" float:left; outline: none; width:50px; height:23px; margin:2px 0 0 5px; background-color:#DEDEDE; border:none; font-family:Hypster-Segoe; font-weight:lighter; font-size:16px;">
+                            @for (int i = 1; i <= 31; i++)
+                            {
+                                <option value="@i" @if (Model.curr_user.birth != null && Model.curr_user.birth.Value.Day == i)
+                                                   { <text>selected="selected"</text>} >@i</option>
+                            }
+                        </select>
+
+                    </div>
+
+                    <div style=" float:left; width:90px; height:26px; border:1px solid #DEDEDE; margin-left:20px; background-color:#DEDEDE; border-radius:2px; font-family:Hypster-Segoe; font-weight:lighter; font-size:16px;">
+                    
+                        <select id="DOB_YYYY" name="DOB_YYYY" style=" float:left; outline: none; width:80px; height:23px; margin:2px 0 0 5px; background-color:#DEDEDE; border:none; font-family:Hypster-Segoe; font-weight:lighter; font-size:16px;">
+                            @for (int i = 1900; i <= 2012; i++)
+                            {
+                                <option value="@i" @if (Model.curr_user.birth != null && Model.curr_user.birth.Value.Year == i)
+                                                   { <text>selected="selected"</text>}>@i</option>
+                            }
+                        </select>
+
+                    </div>
+
+                    <div style=" float:left; width:100%; height:10px;"></div>
+
+                </div>
+            
+
+
+            
+
+    </div>
+    <!-- **************SECTION*************************** -->
+
+
+
+
+
+
+
+
+    <div style=" float:left; width:100%; min-height:50px; background-color:#313537; overflow:hidden; margin-top:10px; border-radius:2px;">
+
+            <div style=" float:right; width:100%; margin-top:12px;">
+                    <input type="submit" value="Save Changes" style=" float:right; width:280px; height:28px; line-height:28px; margin-right:20px; background-color:#42606e; border-radius:3px; color:#FFFFFF; font-family:Hypster-Segoe; font-weight:lighter; font-size:18px; text-align:center; cursor:pointer; " />
+            </div>
+
+    </div>
+    
+} 
+<!-- FORM END -->
+
+
+
+
+
+
+
+
+

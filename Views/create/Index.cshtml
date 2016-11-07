@@ -1,0 +1,86 @@
+﻿@model hypster.ViewModels.createViewModel
+@{
+    ViewBag.Title = "Hypster - free music online - player for tumblr";
+    ViewBag.ActivePage = "create";
+}
+
+
+
+<script type="text/javascript">
+    active_menu = ".mCreate";
+    $(".mCreate").css("background-color", "#41606e");
+
+
+    $(document).ready(function () {
+        //RenderCreateIndex();
+    });
+    $(window).resize(function () {
+        //RenderCreateIndex();
+    });
+</script>
+
+
+
+
+
+
+
+
+<div style=" width:100%; height:450px; background-color:#313537; overflow:hidden;">
+
+
+            <div id="CreateSection1" style=" float:left; width:100%; height:123px; font-size:16px; background-color:#292929; border-radius:3px; padding:1px; margin:3px 0 0 2px; cursor:pointer;" onclick="window.location='/create/player';"> 
+                <img style=" float:left; margin:10px 0 0 120px;" alt="" src="/imgs/mobile/home/create_playlist_icn.png" /> 
+                <div style=" float:left; width:100%;">Create Player</div>
+            </div>
+
+            <div id="CreateSection2" style=" float:left; width:100%; height:123px; font-size:16px; background-color:#181818; border-radius:3px; padding:1px; margin:3px 0 0 2px; cursor:pointer;" onclick="window.location='/create/playlist';">
+                <img style=" float:left; margin:10px 0 0 120px;" alt="" src="/imgs/mobile/home/create_player_icn.png" /> 
+                <div style=" float:left; width:100%;">Create Playlist</div>
+            </div>
+
+            <div id="CreateSection3" style=" float:left; width:100%; height:123px; font-size:16px; background-color:#232323; border-radius:3px; padding:1px; margin:3px 0 0 2px; cursor:pointer;" onclick="window.location='/create/station';"> 
+                <img style=" float:left; margin:10px 0 0 120px;" alt="" src="/imgs/mobile/home/listen_music_icn.png" /> 
+                <div style=" float:left; width:100%;">Create Station</div>
+            </div>
+
+
+
+
+            <div style=" float:left; width:300px; height:50px; background-color:#252525; padding:2px; margin:5px 0 0 8px; overflow:hidden;">
+                
+                    <!-- BEGIN TAG - DO NOT MODIFY -->
+                    <script type="text/javascript">
+                    <!--
+                        epom_key = "6cb3abb7ba1e9a5fdb6f00de26b1767e";
+                        epom_code_format = "ads-api-sync.js";
+                        epom_click = "";
+                        epom_custom_params = {};
+
+                        document.write("<script type='text\/javascript' src='" + (location.protocol == 'https:' ? 'https:' : 'http:') + "//www.adshost2.com\/js/show_ads.js'><\/script>");
+                    //-->
+                    </script>
+                    <!-- END TAG -->
+
+            </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div style=" width:100%; min-height:450px; background-color:#313537; overflow:hidden; margin-top:10px;">
+        
+        @Html.Action("PopularVideos", "popular")
+
+</div>

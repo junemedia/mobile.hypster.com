@@ -1,0 +1,25 @@
+﻿@model List<hypster_tv_DAL.Mix_GetGenresAndCovers>
+@{
+    Layout = null;
+}
+
+
+<div style=" float:left; width:99%; margin-left:1%; ">
+@foreach (var item in Model)
+{   
+    <a href="/listen/@item.GenreName.ToLower().Replace(' ', '_')" style=" float:left; width:95px; margin:3px; background-color:#353535; padding:2px; border-radius:2px;">
+        <img alt="" src="@item.Mix_Cover" width="90" height="90" style=" margin-top:2px;" />
+        <span style=" display:block; float:left; width:100%; height:18px; line-height:18px; overflow:hidden;">
+            @item.GenreName
+        </span>
+    </a>
+}
+
+<a href="/genres" style=" float:left; width:95px; height:114px; margin:3px; background-color:#41606e; padding:2px; border-radius:2px;">
+    <span style=" display:block; float:left; width:100%; margin-top:35px; text-align:center;  font-size:16px;">
+        MORE GENRES
+    </span>
+</a>
+
+</div>
+

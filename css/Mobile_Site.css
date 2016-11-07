@@ -1,0 +1,268 @@
+﻿/* SCROLLBARS SETTINGS */
+/*----------------------------------------------*/
+
+
+html
+{
+	scrollbar-face-color:#777777;
+	scrollbar-base-color:#777777;
+	scrollbar-arrow-color:black;
+	scrollbar-track-color:#313537;
+	scrollbar-shadow-color:#777777;
+	scrollbar-highlight-color:#777777;
+	scrollbar-3dlight-color:#666666;
+	scrollbar-darkshadow-Color:#666666;
+	
+	font-family:Segoe UI Light; 
+    font-weight:lighter;
+}
+
+
+
+/*----------------------------------------------*/
+
+ @font-face 
+ {
+ 	font-family: 'Hypster-Font';
+ 	src: url('/webfonts/245B38_0_0.eot');
+ 	src: url('/webfonts/245B38_0_0.eot?#iefix'),url('/webfonts/245B38_0_0.ttf') format('truetype');
+ }
+ 
+ @font-face 
+ {
+ 	font-family: 'Hypster-Segoe';
+ 	src: url('/webfonts/segoeuil.eot');
+	src: url('/webfonts/segoeuil.eot?#iefix') format('embedded-opentype'),url('/webfonts/segoeuil.ttf') format('truetype');
+ 	font-weight:lighter;
+ }
+
+
+
+ .shadow {
+	-moz-box-shadow: 3px 3px 4px #000;
+	-webkit-box-shadow: 3px 3px 4px #000;
+	box-shadow: 3px 3px 4px #000;
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+ }
+/*----------------------------------------------*/
+
+
+
+
+
+
+
+/*----------------------------------------------*/
+body {
+    font-size: .85em;
+    font-family:Hypster-Segoe; 
+    font-weight:lighter;
+    color:#EEEEEE;
+    
+    background:#181818 url('/imgs/mainBack.jpg') no-repeat;
+    margin:0px; 
+    padding:0px;
+    
+}
+
+
+
+header, footer, nav, section {
+    display: block;
+}
+
+img
+{
+	border:0px;
+}
+
+
+.Trans_BACK {
+     background:#000000;
+     
+     filter:progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+     opacity: 0.90;
+     -moz-opacity:0.90;
+     position:absolute;
+     
+     display:none; z-index:100000; position:absolute; top:0px; left:0px; width:1px; height:1px;
+}
+
+div.Trans_75
+{
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=75);
+    opacity: 0.75;
+    -moz-opacity:0.75;
+}
+/*-----------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+/* Styles for validation helpers */
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+a
+{
+	color:#FFFFFF;
+	text-decoration:none;
+}
+
+a:hover
+{
+	color:#FFFFFF;
+}
+
+a:visited
+{
+	color:#FFFFFF;
+}
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+#MainMenu
+{
+	width:1024px;
+	margin:0 auto 0 auto;
+	height:59px;
+}
+
+
+#MainMenu .mLogo
+{
+	float:left;
+	margin-top:2px;
+	cursor:pointer;
+}
+
+
+
+
+#MainMenu .mHypster
+{
+	float:left; width:110px; height:35px; line-height:30px; cursor:pointer;
+	font-family:Hypster-Segoe; font-weight:lighter; font-size:16px;
+	margin:2px 0 0 2px; text-align:center;
+	border-radius:2px;
+	background-color:#313131;
+}
+
+#MainMenu .mListen
+{
+	float:left; width:70px; height:35px; line-height:30px; cursor:pointer;
+	font-family:Hypster-Segoe; font-weight:lighter; font-size:16px;
+	margin:2px 0 0 2px; text-align:center;
+	border-radius:2px;
+	background-color:#313131;
+}
+
+#MainMenu .mCreate
+{
+	float:left; width:64px; height:35px; line-height:30px; cursor:pointer;
+	font-family:Hypster-Segoe; font-weight:lighter; font-size:16px;
+	margin:2px 0 0 2px; text-align:center;
+	border-radius:2px;
+	background-color:#313131;
+}
+
+#MainMenu .mConnect
+{
+	float:left; width:60px; height:35px; line-height:30px; cursor:pointer;
+	font-family:Hypster-Segoe; font-weight:lighter; font-size:16px;
+	margin:2px 0 0 2px; text-align:center;
+	border-radius:2px;
+	background-color:#313131;
+}
+
+
+#MainMenu .mAccount
+{
+	float:left; width:64px; height:35px; line-height:30px; cursor:pointer;
+	font-family:Hypster-Segoe; font-weight:lighter; font-size:16px;
+	margin:2px 0 0 2px; text-align:center;
+	border-radius:2px;
+	background-color:#313131;
+}
+
+
+
+
+#MainMenu .mHypsterMenu
+{
+	float:left; min-width:10px; height:28px; line-height:28px; cursor:pointer;
+	font-family:Hypster-Segoe; font-weight:lighter; font-size:16px;
+	margin:4px 0 0 4px; padding:0 5px 0 5px;
+ 	text-align:center;
+	border-radius:2px;
+	background-color:#41606E;
+}
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+/* GENRES */
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+
+.genre_item
+{
+	display:block; float:left; width:75px; height:45px; line-height:45px; background-color:#353535; border-radius:2px; text-align:center;
+	margin:0 5px 5px 0;
+	color:#dddddd;
+}
+
+.genre_item_home
+{
+	display:block; float:left; width:74px; height:45px; line-height:45px; background-color:#2b3033; border-radius:2px; text-align:center;
+	margin:0 5px 5px 0;
+	color:#dddddd;
+}
+
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+/* LISTEN */
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+#StartPlMsg
+{
+	float:left; width:100%; text-align:center; font-size:25px; margin-bottom:25px;
+}
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+.MoodsContH
+{
+	float:left; width:99%; min-height:10px; overflow:hidden; margin:10px 0 0 1%;
+}
+
+.Gtag
+{
+	float:left; padding:2px 7px 2px 7px; margin:0 3px 3px 0; background-color:#373737; cursor:pointer; border-radius:2px;
+}

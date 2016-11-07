@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Hypster - free music online - player for tumblr";
+    ViewBag.ActivePage = "hypster";
+    Layout = "~/Views/Shared/_LayoutT.cshtml";
+}
+
+
+<script type="text/javascript">
+    active_menu = ".mHypster";
+    $(".mHypster").css("background-color", "#41606e");
+
+</script>
+
+
+
+
+<div style=" float:left; width:100%; ">
+
+        
+        <div style=" float:left; width:100%; text-align:left; font-size:16px; color:#bbbbbb; margin-bottom:5px;">
+            &nbsp;&nbsp;Music Genres
+        </div>
+
+       
+        <div style=" float:left; width:100%; height:40px; background-color:#252525; border-radius:2px; margin:0 0 0 0; overflow:hidden;">
+            
+            <div style=" float:left; width:330px; height:45px;">
+                <input style=" float:left; width:230px; height:22px; margin:4px 0 0 3px; padding:0 7px 0 7px; background-color:#EEEEEE; border:3px solid #FEFEFE; border-radius:5px;" type="text" id="txtSearchString" name="txtSearchString" onKeyUp="SearchString_KeyUp(event)" value=" Enter Artist, Song or Genre"  onfocus="if(this.value == ' Enter Artist, Song or Genre') this.value = '';" onblur="if(this.value == '') this.value = ' Enter Artist, Song or Genre';" />
+                <div id="btnSearch" onclick="StartMusicSearch()" style="float:left; width:60px; height:28px; line-height:28px; margin:4px 0 0 3px; background-color:#41606e; border-radius:3px; cursor:pointer;">Listen</div>
+            </div>
+        
+        </div>
+
+
+
+
+
+
+
+        <div style=" float:left; width:100%;">
+            @*Html.Action("GetRandomHomeGenres", "home")*@
+        </div>
+
+
+
+
+        <div style=" float:left; width:100%; text-align:left; font-size:16px; color:#bbbbbb; margin-bottom:5px; margin-top:5px;">
+            &nbsp;&nbsp;Hypster
+        </div>
+            
+
+        <div style=" float:left; width:99%; margin-left:1%;">
+            <div onclick="window.location='/listen';" style=" float:left; width:95px; height:100px; font-size:16px; background-color:#2b3033; border-radius:3px; padding:2px; margin:3px; cursor:pointer;"> 
+                <img style=" float:left; margin:5px 0 0 13px; " width="75" alt="" src="/imgs/mobile/home/listen_music_icn.png" /> 
+                <div style=" float:left; width:100%;">Liten Radio</div>
+            </div>
+
+            <div onclick="window.location='/account/info';" style=" float:left; width:95px; height:100px; font-size:16px; background-color:#2b3033; border-radius:3px; padding:2px; margin:3px; cursor:pointer;"> 
+                <img style=" float:left; margin:5px 0 0 13px; " width="75" alt="" src="/imgs/mobile/home/my_account_icn.png" /> 
+                <div style=" float:left; width:100%;">My Account</div>
+            </div>
+
+            <div onclick="window.location='/mixes';" style=" float:left; width:95px; height:100px; font-size:16px; background-color:#2b3033; border-radius:3px; padding:2px; margin:3px; cursor:pointer;">
+                <img style=" float:left; margin:5px 0 0 13px; " width="75" alt="" src="/imgs/mobile/home/create_playlist_icn.png" /> 
+                <div style=" float:left; width:100%;">Find Mixes</div>
+            </div>
+        </div>
+            
+
+        
+
+
+
+
+
+
+</div>

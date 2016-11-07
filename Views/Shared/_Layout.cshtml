@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=360" />
+    <title>@ViewBag.Title</title>
+
+    <meta name="description" content="@ViewBag.Meta" />
+    
+
+    
+    <script src="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css"  type="text/javascript"></script>
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"  type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"  type="text/javascript"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
+
+    @Scripts.Render("~/scripts/hypScript.js?id=33007210299")
+    @Scripts.Render("~/scripts/hypSlide.js?id=33007210299")
+
+    <link href="/css/Mobile_Site.css?id=33007210299" rel="Stylesheet" type="text/css" />
+
+
+
+
+    <script type="text/javascript">
+        var WW = 360;
+        $(document).ready(function () {
+            WW = $(window).width();
+        });
+    </script>
+
+</head>
+
+
+
+
+
+<body>
+    
+    <div style=" float:left; width:100%; min-width:320px; ">
+        <center>
+                <div id="MainMenu" style="clear:both; width:320px;">
+                    
+
+                    <!--  -->
+                    <div style=" float:left; width:100%; height:40px; border-radius:2px; background-color:#252525;">
+                        <a class="mHypster" href="/" ><img alt="Hypster" src="/imgs/shared/hyp_logo_pp.png" style=" float:left; margin:10px 0 0 6px;" /></a>
+                        <a class="mListen" href="/listen">Listen</a>
+                        <a class="mCreate" href="/genres">Genres</a>
+                        <a class="mAccount" href="/account/info">@if (User.Identity.IsAuthenticated){ <text>Account</text> }else{ <text>Login</text> }</a>
+                    </div>
+
+
+                    
+                    <div style=" float:left; width:100%; border-radius:2px; margin-top:10px;">
+                        @RenderBody()
+                    </div>
+
+
+                    <div style=" float:left; width:100%; border-radius:2px; margin-top:10px;">
+                        <a href="https://play.google.com/store/apps/details?id=com.pasta.v1" target="_blank">
+                            <img src="/imgs/pasta_add_1.jpg" style=" border:3px solid #232323; border-radius:3px;" />
+                        </a>
+                    </div>
+
+                    <!--  -->
+                    <div style=" float:left; width:100%; height:36px; border-radius:2px; margin-top:13px; background-color:#252525;">
+                        <a class="mHypsterMenu" href="http://hypster.com/mobileTW/index">Hypster Website</a>
+
+                        <div style=" float:right; margin:7px 5px 0 0; font-size:12px; color:#dedede;">
+                            powered by <a href="http://www.8tracks.com" target="_blank">8tracks.com</a>
+                        </div>
+                    </div>
+
+
+                </div>
+        </center>
+    </div>
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+    <!-- hide back -->
+    <div class="Trans_BACK" id="HideBackDiv" onclick="Show_Content();"></div>
+    <div id="popupContainer"></div>
+    <!-- hide back -->
+
+
+
+    
+
+
+
+
+
+
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-28695705-8']);
+        _gaq.push(['_setDomainName', 'hypster.com']);
+        _gaq.push(['_setAllowLinker', true]);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+
+
+  
+
+   
+</body>
+</html>

@@ -1,0 +1,29 @@
+﻿@{
+    Layout = null;
+}
+
+
+<script type="text/javascript">
+    
+    var SKIP_ALLOWED = @ViewBag.SKIP_ALLOWED;
+    var TRACK_ID = "@ViewBag.TRACK_ID";
+    
+
+    if(SKIP_ALLOWED == false)
+    {   
+        $('#songNameCT').html('Sorry, but track skips are limited by law.');
+    }
+    else{
+        $("#HypAudioPL").attr("src", "@ViewBag.SONG_URL");
+        $("#HypAudioPL").trigger("play");
+    }
+
+</script>
+
+
+<div id="songNameCT" style=" float:left; width:96%; margin-left:2%; margin-top:10px;">
+    @ViewBag.SONG_NAME
+</div>
+
+
+

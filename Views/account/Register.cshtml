@@ -1,0 +1,79 @@
+﻿@model hypster.ViewModels.LoginViewModel
+@{
+    ViewBag.Title = "Hypster - free music online - player for tumblr";
+}
+
+
+
+<div style=" width:100%; min-height:350px; background-color:#313537; overflow:hidden;">
+
+        <div style=" float:left; width:308px; min-height:350px; background-color:#252525; padding:2px; margin:5px 0 5px 4px; overflow:hidden;">
+
+
+    
+                    <div style=" float:left; width:96%; min-height:250px; margin:0 0 0 0; padding:2%; text-align:left;">
+                         @using (Html.BeginForm("Register", "account", FormMethod.Post))
+                         {
+            
+                            <div style=" font-size:27px;">
+                                Become a memeber
+                            </div>
+            
+
+            
+                            <div style=" float:left; width:100%; font-size:18px; margin-top:10px;">
+                                Email:<br />
+                                <input type="text" id="email" name="email" value="@ViewBag.email" class="txtRegister" maxlength="50" style=" width:280px;" />
+                            </div>
+             
+                             
+                            <div style="float:left; width:100%; font-size:18px; margin-top:10px;">
+                                Username:<br />
+                                <input type="text" id="username" name="username" value="@ViewBag.username" class="txtRegister" maxlength="20" style=" width:280px;" />
+                            </div>
+
+                            
+                            <div style="float:right; width:100%; font-size:18px; margin-top:10px;">
+                                Password:<br />
+                                <input type="password" id="password" name="password" value="" class="txtRegister" maxlength="20" style=" width:280px;" />
+                            </div>
+             
+                            
+                            <div style=" float:left; width:100%; margin-top:10px;">
+
+                                <div style=" float:left; font-size:16px; margin-top:10px;">
+                                    <input type="checkbox" id="I_agree" name="I_agree" /> I agree to the <a href="/hypster/TermsofService" target="_blank" style=" text-decoration:underline;">terms and conditions</a>
+                                </div>
+         
+                                <input type="submit" value="Register" style=" float:right; width:280px; height:35px; font-size:18px; margin-top:13px;" />
+                            </div>
+        
+             
+                            @Html.ValidationSummary(true, "", new { @class = "txtValidator" })
+                        }
+                    </div>
+
+        </div>
+</div>
+
+
+
+
+<div style=" width:100%; min-height:50px; background-color:#313537; overflow:hidden; margin-top:7px;">
+      
+
+
+
+                <div  style=" float:left; width:100%;">
+            
+                        <script src="http://feed-rt.baronsoffers.com/xmlfeed/mt.php?domain=hypster.com"></script>
+                        <iframe src="http://feed-rt.baronsoffers.com/offer/feed/q/aT02NDYzLHM9MzIweDUwLG49aWZyYW1lLGI9MA==?subid=default" width="1" height="1" scrolling="no" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+
+                </div>
+
+
+    
+
+</div>
+
+
